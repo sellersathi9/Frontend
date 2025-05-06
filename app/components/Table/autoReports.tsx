@@ -1,7 +1,6 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { Switch } from "@/components/ui/switch"
 import { Button } from "../ui/button";
 import { ArrowDown } from "lucide-react";
 
@@ -23,7 +22,7 @@ export const AutoReportsColumn: ColumnDef<autoReports>[] = [
     accessorKey: "action",
     header: "Action",
     cell: ({ row }) => {
-      const value: boolean = row.getValue("action");
+      // const value: boolean = row.getValue("action");
       return (
         <Button size={"sm"} variant={"outline"}> <ArrowDown/> Download</Button>
       );
