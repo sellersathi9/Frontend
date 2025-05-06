@@ -5,7 +5,7 @@ import SalesCard from "@/app/components/salesCard";
 import TabLayout from "@/app/components/TabLayout";
 import { Button } from "@/app/components/ui/button";
 import { ArrowDown, ChevronsRight, FolderDown } from "lucide-react";
-import {  useState } from "react";
+import { useState } from "react";
 import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -21,6 +21,12 @@ import { TopSellingcolumns } from "@/app/components/Table/TopSellingColumns";
 import salesData from "../Mock data/salesData";
 import topSellingdata from "../Mock data/topSellingData";
 import ReturnRateChart from "@/app/components/charts/returnRate";
+import addCampaignData from "../Mock data/addCampaignData";
+import { AddcampaignsColumn } from "../components/Table/addCampaignsColumns";
+import inventoryALertData from "../Mock data/inventoryalertData";
+import { InventoryAlertColumns } from "../components/Table/inventoryAlertColumns";
+import { AutoReportsColumn } from "../components/Table/autoReports";
+import autoReportData from "../Mock data/autoReportData";
 
 ChartJS.register(
   BarElement,
@@ -66,8 +72,7 @@ const options = {
 function Dashboard() {
   type Timeframe = "daily" | "weekly" | "monthly";
 
-const [timeframe, setTimeframe] = useState<Timeframe>("daily");
-
+  const [timeframe, setTimeframe] = useState<Timeframe>("daily");
 
   return (
     <>
@@ -161,12 +166,10 @@ const [timeframe, setTimeframe] = useState<Timeframe>("daily");
                 </div>
               </div>
             </div>
-
-            
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 2xl:grid-cols-2 gap-4">
-          <div className="rounded-xl overflow-hidden p-6 border flex flex-col gap-10">
+            <div className="rounded-xl overflow-hidden p-6 border flex flex-col gap-10">
               <div className="flex justify-between items-center">
                 <h2 className="text-lg font-semibold">Best Selling Products</h2>
                 <Button variant={"outline"}>
@@ -177,14 +180,47 @@ const [timeframe, setTimeframe] = useState<Timeframe>("daily");
             </div>
 
             <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2 gap-4">
-              <div className="rounded-xl border h-60"></div>
-              <div className="rounded-xl border h-60"></div>
-            </div>
+              <div className="rounded-xl overflow-hidden p-6 border flex flex-col gap-10">
+                <div className="flex justify-between items-center">
+                  <h2 className="text-lg font-semibold">Inventory Alerts</h2>
+                  <Button variant={"outline"}>
+                    View All <ChevronsRight />
+                  </Button>
+                </div>
+                <DataTable
+                  data={inventoryALertData}
+                  columns={InventoryAlertColumns}
+                />
+              </div>
+              <div className="rounded-xl overflow-hidden p-6 border flex flex-col gap-10">
+                <div className="flex justify-between items-center">
+                  <h2 className="text-lg font-semibold">Auto Reports</h2>
+                  <Button variant={"outline"}>
+                    View All <ChevronsRight />
+                  </Button>
+                </div>
 
+                <DataTable
+                  data={autoReportData}
+                  columns={AutoReportsColumn}
+                />
+              </div>
+            </div>
           </div>
 
           <div className="grid  grid-cols-1 md:grid-cols-1 lg:grid-cols-1">
-            <div className="border h-60 rounded-xl"></div>
+            <div className="rounded-xl overflow-hidden p-6 border flex flex-col gap-10">
+              <div className="flex justify-between items-center">
+                <h2 className="text-lg font-semibold">
+                  Ads & Campaigns Summary
+                </h2>
+                <Button variant={"outline"}>
+                  View All <ChevronsRight />
+                </Button>
+              </div>
+
+              <DataTable data={addCampaignData} columns={AddcampaignsColumn} />
+            </div>
           </div>
         </div>
       </TabLayout>

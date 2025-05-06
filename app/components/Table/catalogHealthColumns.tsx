@@ -4,7 +4,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { Check, X } from "lucide-react";
 import Image from "next/image";
 
-export type inventory = {
+export type catalogHealth = {
   image: string;
   name: string;
   bulletPoints: boolean;
@@ -15,7 +15,7 @@ export type inventory = {
   status: string;
 };
 
-export const CatalogHealthCOlumns: ColumnDef<inventory>[] = [
+export const CatalogHealthCOlumns: ColumnDef<catalogHealth>[] = [
   {
     accessorKey: "image",
     header: "Image",
