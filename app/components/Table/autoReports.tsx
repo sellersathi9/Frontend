@@ -21,8 +21,7 @@ export const AutoReportsColumn: ColumnDef<autoReports>[] = [
   {
     accessorKey: "action",
     header: "Action",
-    cell: ({ row }) => {
-      // const value: boolean = row.getValue("action");
+    cell: () => {
       return (
         <Button size={"sm"} variant={"outline"}> <ArrowDown/> Download</Button>
       );
